@@ -57,7 +57,7 @@ def validate_truetype_file(value):
     if value.endswith('.zip'):  # for Google Fonts downloads
         raise cv.Invalid("Please unzip the font archive '{}' first and then use the .ttf files "
                          "inside.".format(value))
-    if not value.endswith('.ttf'):
+    if not value.lower().endswith('.ttf') or not value.lower().endswith('.otf'):
         raise cv.Invalid("Only truetype (.ttf) files are supported. Please make sure you're "
                          "using the correct format or rename the extension to .ttf")
     return cv.file_(value)
